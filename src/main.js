@@ -2,14 +2,14 @@
 // Created: 4/14/2024
 // Phaser: 3.70.0
 //
-// BuildAMonster
+// Cubey
 //
-// A template for building a monster using a series of assets from
-// a sprite atlas.
+// An example of putting sprites on the screen using Phaser
 // 
-// Art assets from Kenny Assets "Monster Builder Pack" set:
-// https://kenney.nl/assets/monster-builder-pack
+// Art assets from Kenny Assets "Shape Characters" set:
+// https://kenney.nl/assets/shape-characters
 
+// debug with extreme prejudice
 "use strict"
 
 // game config
@@ -21,13 +21,21 @@ let config = {
     },
     physics: {
         default: 'arcade',
-        arcade: { debug: false }
+        arcade: {
+            debug: true,
+            gravity: {
+                x: 0,
+                y: 0
+            }
+        }
     },
-    width: 800,
+    width: 1000,
     height: 600,
-    scene: [scene2]
+    scene: [Load, Platformer]
 }
 
+var cursors;
+const SCALE = 2.0;
+var my = {sprite: {}, text: {}, vfx: {}};
+
 const game = new Phaser.Game(config);
-game.scene.add('scene1', scene1);
-game.scene.add('scene3', scene3);
