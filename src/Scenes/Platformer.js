@@ -40,6 +40,8 @@ class Platformer extends Phaser.Scene {
         this.hiddenLayer2 = this.map.createLayer("hiddenLayer2", this.tileset, 0, 0);
         this.hiddenLayer3 = this.map.createLayer("hiddenLayer3", this.tileset, 0, 0);
         this.hiddenLayer4 = this.map.createLayer("hiddenLayer4", this.tileset, 0, 0);
+        this.hiddenLayer5 = this.map.createLayer("hiddenLayer5", this.tileset, 0, 0);
+        
         this.winnerScreen = this.map.createLayer("winnerscreen", this.tileset, 0, 0);
 
 
@@ -60,10 +62,14 @@ class Platformer extends Phaser.Scene {
         this.hiddenLayer4.setCollisionByProperty({
             collides: false
         });
+        this.hiddenLayer5.setCollisionByProperty({
+            collides: false
+        });
         this.winnerScreen.setCollisionByProperty({
             collides: false
         });
         this.winnerScreen.setAlpha(0);
+        this.hiddenLayer5.setAlpha(0);
         this.hiddenLayer4.setAlpha(0);
         this.hiddenLayer3.setAlpha(0);
         this.hiddenLayer2.setAlpha(0);
@@ -112,6 +118,7 @@ class Platformer extends Phaser.Scene {
         this.physics.add.collider(my.sprite.player, this.hiddenLayer2);
         this.physics.add.collider(my.sprite.player, this.hiddenLayer3);
         this.physics.add.collider(my.sprite.player, this.hiddenLayer4);
+        this.physics.add.collider(my.sprite.player, this.hiddenLayer5);
         this.physics.add.collider(my.sprite.player, this.winnerScreen);
 
         this.physics.add.collider(my.sprite.player, my.sprite.playerHelper);
@@ -122,6 +129,7 @@ class Platformer extends Phaser.Scene {
         this.physics.add.collider(my.sprite.playerHelper, this.hiddenLayer2);
         this.physics.add.collider(my.sprite.playerHelper, this.hiddenLayer3);
         this.physics.add.collider(my.sprite.playerHelper, this.hiddenLayer4);
+        this.physics.add.collider(my.sprite.playerHelper, this.hiddenLayer5);
         this.physics.add.collider(my.sprite.playerHelper, this.winnerScreen);
 
 
@@ -185,6 +193,14 @@ class Platformer extends Phaser.Scene {
         this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+
+
+
+        //tutorial
+        const text1 = this.add.text(150,300, 'press the arrow keys to move');
+        const text2 = this.add.text(1000,350, 'use WASD to move blue guy')
+        const text3 = this.add.text(1330, 55, 'You will need to be going ');
+        const text4 = this.add.text(1330, 70, 'fast to get through the shield');
         
     }
     
@@ -214,6 +230,10 @@ class Platformer extends Phaser.Scene {
             if(this.coinsCollected == 4){
                 this.hiddenLayer4.setAlpha(100);
                 this.hiddenLayer4.setCollisionByProperty({collides: true});
+            }
+            if(this.coinsCollected == 5){
+                this.hiddenLayer5.setAlpha(100);
+                this.hiddenLayer5.setCollisionByProperty({collides: true});
             }
         }
         
