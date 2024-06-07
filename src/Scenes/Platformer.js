@@ -162,6 +162,7 @@ class Platformer extends Phaser.Scene {
 
         this.rKey = this.input.keyboard.addKey('R');
 
+        this.physics.world.drawDebug = false;
         // debug key listener (assigned to F key)
         this.input.keyboard.on('keydown-F', () => {
             this.physics.world.drawDebug = this.physics.world.drawDebug ? false : true
@@ -201,7 +202,10 @@ class Platformer extends Phaser.Scene {
         const text2 = this.add.text(1000,350, 'use WASD to move blue guy')
         const text3 = this.add.text(1330, 55, 'You will need to be going ');
         const text4 = this.add.text(1330, 70, 'fast to get through the shield');
-        
+        const text5 = this.add.text(1330, 500, 'Thanks for playing! Press R to restart');
+        const test6 = this.add.text(1330, 515, 'Created by Ezra Frary');
+        const text7 = this.add.text(100,700, 'EZ GAME');
+
     }
     
     makeNewLayersVisible(){
