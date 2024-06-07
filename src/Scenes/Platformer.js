@@ -210,7 +210,7 @@ class Platformer extends Phaser.Scene {
             this.cameras.main.setBounds(0, 0, this.map.widthInPixels, 468);
         }
         if(this.levelsCompleted == 2){
-            this.cameraStartX.main.setBounds(0,0, this.map.widthInPixels, this.map.heightInPixels);
+            this.cameras.main.setBounds(0,0, this.map.widthInPixels, this.map.heightInPixels);
         }
         if(this.levelsCompleted == 0){
             if(this.coinsCollected == 1){
